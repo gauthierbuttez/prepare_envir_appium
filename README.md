@@ -1,4 +1,4 @@
-# prepare_envir_appium
+# prepare_envir_appium.py
 This script will check and install the necessary software required by appium.
 Appium need several software to be installed on your machine.
 THis script is for Python newbie who would like to start quickly to work on Appium.
