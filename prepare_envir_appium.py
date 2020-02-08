@@ -239,34 +239,36 @@ def install_environment(java,node,android,appium):
                   Please download and install DoneJS manually from https://nodejs.org/en/download/\n \
                   Once it is done, re-run programname.exe")
 
-C_program_folder = os.environ['PROGRAMFILES']
-java,node,android,appium = check_envrionment()
-while java!=True or node!=True or android!=True or appium!=True:
-    if java==True and node==True and android==True and appium==True:
-        print("Everything seems to be fine. When you will run the programname.exe, please send us the log file to support@programname.co if something goes wrong!")
-        break
-    else:
-        install_environment(java,node,android,appium)
-        java, node, android, appium = check_envrionment()
-        answer = None
-        while answer not in ("y", "n"):
-            answer=input("Would you like to try again to install the missing program?(answer => y) or would you prefer to install it yourself manually(answer => n) : ").lower().strip()
-            if answer=='y':
-                print("Ok. We will try to install again the missing program!")
-            elif answer =='n':
-                print("Ok. Here is the list of tasks in chronologicall order for installing the software:")
-                if java==False:
-                    print(f"    - Java is missing. You can download it here: https://www.java.com/download/\n")
-                if node==False:
-                    print(f"    - NodeJS is missing. You can download it here: https://www.java.com/download/\n")
-                if android==False:
-                    print(f"    - Android Tools are missing. You can download the zip file here: https://developer.android.com/studio/releases/platform-tools/")
-                    print(f"      Then, unzip all these files in {C_program_folder}\Android\\tools folder. If these folder and subfolder doesn't exist, create them.\n")
-                if appium==False:
-                    print(f"    - Appium is missing. Open the windows 'command' and type this line: 'npm install -g appium' (without the quotes)")
-                java, node, android, appium = True,True,True,True
-                break
-            else:
-                print("Please answer 'y' to try again or 'n' to exit the program")
 
+# ---START OF SCRIPT------------------------------------------------------------------
+if __name__ == '__main__':
 
+    C_program_folder = os.environ['PROGRAMFILES']
+    java,node,android,appium = check_envrionment()
+    while java!=True or node!=True or android!=True or appium!=True:
+        if java==True and node==True and android==True and appium==True:
+            print("Everything seems to be fine. When you will run the programname.exe, please send us the log file to support@programname.co if something goes wrong!")
+            break
+        else:
+            install_environment(java,node,android,appium)
+            java, node, android, appium = check_envrionment()
+            answer = None
+            while answer not in ("y", "n"):
+                answer=input("Would you like to try again to install the missing program?(answer => y) or would you prefer to install it yourself manually(answer => n) : ").lower().strip()
+                if answer=='y':
+                    print("Ok. We will try to install again the missing program!")
+                elif answer =='n':
+                    print("Ok. Here is the list of tasks in chronologicall order for installing the software:")
+                    if java==False:
+                        print(f"    - Java is missing. You can download it here: https://www.java.com/download/\n")
+                    if node==False:
+                        print(f"    - NodeJS is missing. You can download it here: https://www.java.com/download/\n")
+                    if android==False:
+                        print(f"    - Android Tools are missing. You can download the zip file here: https://developer.android.com/studio/releases/platform-tools/")
+                        print(f"      Then, unzip all these files in {C_program_folder}\Android\\tools folder. If these folder and subfolder doesn't exist, create them.\n")
+                    if appium==False:
+                        print(f"    - Appium is missing. Open the windows 'command' and type this line: 'npm install -g appium' (without the quotes)")
+                    java, node, android, appium = True,True,True,True
+                    break
+                else:
+                    print("Please answer 'y' to try again or 'n' to exit the program")
